@@ -1,8 +1,6 @@
-
-
 let tareaAg = document.getElementById("tarea")
 let btnAgg = document.getElementById("btnAgg")
-
+let contenedor = document.getElementById("contenedorTareas")
 
 //POST
 async function postData() {
@@ -31,10 +29,19 @@ async function postData() {
 async function getData() {
     let peticion = await fetch('http://localhost:3000/api/task')
     let datos = await peticion.json()
-    
-    
-}
+    datos.forEach( tarea => {
+        let div = document.createElement("div")
+        let h2 = document.createElement("h2")
+        let checkBox = document.createElement("input")
+        let deleteBtn = document.createElement("button")
+        checkBox.type = "checkbox"
+        h2.innerHTML = tarea.nombre 
+        h2.appendChild (checkBox)
+        h2.appendChild(deleteBtn)
+        div.appendChild(h2)
 
-    btnAgg.addEventListener("click",postData)
+    });
+}
+btnAgg.addEventListener("click",postData)
 
 
