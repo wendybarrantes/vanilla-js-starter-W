@@ -1,6 +1,10 @@
+
+
 let tareaAg = document.getElementById("tarea")
 let btnAgg = document.getElementById("btnAgg")
 
+
+//POST
 async function postData() {
     console.log("dsda");
     try {
@@ -23,5 +27,14 @@ async function postData() {
     }
 }
 
+//GET
+async function getData() {
+    let peticion = await fetch('http://localhost:3000/api/task')
+    let datos = await peticion.json()
+    
+    
+}
 
-btnAgg.addEventListener("click",postData)
+    btnAgg.addEventListener("click",postData)
+
+
