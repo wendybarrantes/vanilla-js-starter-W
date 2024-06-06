@@ -29,6 +29,7 @@ async function postData() {
         })
         let guardarDatos= await peticion.json()
         console.log(guardarDatos);
+        
     } catch (error) {
         console.log(error);
     }
@@ -37,7 +38,6 @@ async function postData() {
 /*El método GET. Se crea con una función asíncrona, que llama a la Api para traer los datos. 
 Estos datos se guardan dentro de la variable datos, está variable es igual al await de nuestra petición, o sea 
 los datos que haya traído de la Api .
-
 La variable datos funciona como arreglo por eso se le aplica la función forEach, esta va a iterar sobre cada tarea 
 que haya en nuestra Api haciendo el código que esté dentro del bloque forEach.
 */
@@ -47,10 +47,12 @@ async function getData() {
     datos.forEach( tarea => {
         let div = document.createElement("div")
         let h2 = document.createElement("h2")
-        let checkBox = document.createElement("input")
-        let deleteBtn = document.createElement("button")
-        checkBox.type = "checkbox"
         h2.innerHTML = tarea.nombre 
+        let checkBox = document.createElement("input")
+        checkBox.type = "checkbox"
+        let deleteBtn = document.createElement("button")
+        deleteBtn.innerHTML="Delete"
+
         h2.appendChild (checkBox)
         h2.appendChild(deleteBtn)
         div.appendChild(h2)
@@ -60,20 +62,27 @@ async function getData() {
         })
     });
 }
-btnAgg.addEventListener("click",postData)
+BtnAT.addEventListener("click",postData)
 
 
 /*Metodo Delete. creamos una función asímcrona que recibe por parametro el id de la tarea a eliminar 
 dentro de esta función se crea una variable petición que hace un await.fetch pasandole a la 
 url(enlace) el id y luego ejecutando el método delete.
 */
-
 async function deleteTask(id) {
     let peticion = await fetch(`http://localhost:3000/api/task/${id}`,{
         method: "DELETE" 
     })
-console.log("se borró la tarea" + id);
-
+    console.log("se borró la tarea" + id);
 }
 
+
+
+//Metodo PUT. 
+async function updateData(id) {
+    let peticion = await fetch (`http://localhost:3000/api/task/${id}`,{
+        method:"PUT"
+    })
+    
+}
 
