@@ -4,14 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<link rel="stylesheet" href="/src/styles.css">
 </head>
 <body>
 	
-	<h1> Tareas por hacer</h1>
+<h1>To-Do App</h1>	
 
-	<input id="tarea" type="text" placeholder="ingresar tarea">
-	<button  id="btnAgg">Agregar</button>
-	<div id = "contenedorTareas"></div>
+<input class = "titleTask" type="text" placeholder= "enter task title" id="inputTask">
+
+<button class = "BtnAT" id="BtnAT"> Add Task</button>
+
+<div class="ContainerTask" id="ContainerTask"></div>
+
+<input class ="ContTask" type ="number" value='0' id="ContTask">
 
 
 	<script src="index.js"></script>
