@@ -29,6 +29,7 @@ async function postData() {
         })
         let guardarDatos= await peticion.json()
         console.log(guardarDatos);
+        getData()
     } catch (error) {
         console.log(error);
     }
@@ -50,6 +51,7 @@ async function getData() {
         let checkBox = document.createElement("input")
         let deleteBtn = document.createElement("button")
         checkBox.type = "checkbox"
+        deleteBtn.innerHTML= "delete"
         h2.innerHTML = tarea.nombre 
         h2.appendChild (checkBox)
         h2.appendChild(deleteBtn)
@@ -60,8 +62,8 @@ async function getData() {
         })
     });
 }
-btnAgg.addEventListener("click",postData)
-
+BtnAT.addEventListener("click",postData)
+getData()
 
 /*Metodo Delete. creamos una función asímcrona que recibe por parametro el id de la tarea a eliminar 
 dentro de esta función se crea una variable petición que hace un await.fetch pasandole a la 
@@ -73,7 +75,7 @@ async function deleteTask(id) {
         method: "DELETE" 
     })
 console.log("se borró la tarea" + id);
-
+getData()
 }
 
 
