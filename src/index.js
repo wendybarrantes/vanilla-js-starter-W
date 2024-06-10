@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-
-
-let tareaAg = document.getElementById("tarea")
-let btnAgg = document.getElementById("btnAgg")
-
-
-//POST
-async function postData() {
-    console.log("dsda");
-    try {
-        let tarea = {
-            nombre: tareaAg.value,
-=======
 /* 
 Referenciar las etiquetas de HTML para darle funcionalidad en js.
 */
@@ -36,7 +22,6 @@ async function postData() {
     try {
         let tarea = {
             nombre: inputTask.value,
->>>>>>> logica
             id: Date.now(),
             estado: false
         }
@@ -49,26 +34,12 @@ async function postData() {
         })
         let guardarDatos= await peticion.json()
         console.log(guardarDatos);
-<<<<<<< HEAD
-=======
         getData()
->>>>>>> logica
     } catch (error) {
         console.log(error);
     }
 }
 
-<<<<<<< HEAD
-//GET
-async function getData() {
-    let peticion = await fetch('http://localhost:3000/api/task')
-    let datos = await peticion.json()
-    
-    
-}
-
-    btnAgg.addEventListener("click",postData)
-=======
 /*El método GET. Se crea con una función asíncrona, que llama a la Api para traer los datos. 
 Estos datos se guardan dentro de la variable datos, está variable es igual al await de nuestra petición, o sea 
 los datos que haya traído de la Api .
@@ -166,6 +137,5 @@ console.log(error);
 }
 
 
->>>>>>> logica
 
 

@@ -4,16 +4,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	
-	<h1>Tareas por hacer</h1>
 
-	<input id="tarea" type="text" placeholder="ingresar tarea">
-	<button  id="btnAgg">Agregar</button>
-
-
-
+<div class="container">
+	<h1>To Do List</h1>
+	<input class="titleTask" type="text" placeholder="Enter Task Title" id="inputTask">
+	<button class="BtnAT" id="BtnAT">Add Task</button>
+	<h2>Task List</h2>
+	<ul class="task-list" id="ContainerTask">
+		
+	</ul>
+	<div class="footer">
+	<input readonly class="ContTask" type="number" value='0' id="ContTask">
+	</div>
+</div>
 	<script src="index.js"></script>
 </body>
 </html>
