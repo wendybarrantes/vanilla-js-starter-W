@@ -6,6 +6,11 @@ let BtnAT = document.getElementById("BtnAT")
 let ContainerTask = document.getElementById("ContainerTask")
 let ContTask= document.getElementById("ContTask")
 
+inputTask.addEventListener("keydown",(e)=>{ 
+    if(e.key=="Enter"){
+        postData() 
+    }
+})
 /*
 Método POST.
 el método POST se crea con una función asíncrona que tiene un bloque 
@@ -43,24 +48,53 @@ La variable datos funciona como arreglo por eso se le aplica la función forEach
 que haya en nuestra Api haciendo el código que esté dentro del bloque forEach.
 */
 async function getData() {
-    let peticion = await fetch('http://localhost:3000/api/task')
-    let datos = await peticion.json()
-    datos.forEach( tarea => {
-        let div = document.createElement("div")
-        let h2 = document.createElement("h2")
-        let checkBox = document.createElement("input")
-        let deleteBtn = document.createElement("button")
-        checkBox.type = "checkbox"
-        deleteBtn.innerHTML= "delete"
-        h2.innerHTML = tarea.nombre 
-        h2.appendChild (checkBox)
-        h2.appendChild(deleteBtn)
-        div.appendChild(h2)
-        ContainerTask.appendChild(div)
-        deleteBtn.addEventListener("click",()=>{
-         deleteTask(tarea.id)
-        })
-    });
+     try {
+        ContainerTask.innerHTML = ""
+        let peticion = await fetch('http://localhost:3000/api/task')
+        let datos = await peticion.json()
+        datos.forEach( tarea => {
+            let div = document.createElement("div")
+            let h2 = document.createElement("h2")
+            let checkBox = document.createElement("input")
+            let deleteBtn = document.createElement("button")
+            checkBox.type = "checkbox"
+            deleteBtn.innerHTML= "delete"
+            checkBox.checked = tarea.estado 
+            if (tarea.estado){
+                ContTask.value++  
+            }
+            h2.innerHTML = tarea.nombre 
+            h2.appendChild (checkBox)
+            h2.appendChild(deleteBtn)
+            div.appendChild(h2)
+            ContainerTask.appendChild(div)
+            deleteBtn.addEventListener("click",()=>{
+             deleteTask(tarea.id)
+            })
+            checkBox.addEventListener("click", ()=>{
+             if(tarea.estado){
+                ContTask.value++ 
+
+            updateData(tarea.id)
+
+            checkBox.checked = true 
+        
+             } 
+
+            else {
+                ContTask.value--
+
+            updateData(tarea.id)
+
+            checkBox.checked = false 
+            }
+
+            })
+
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }
 BtnAT.addEventListener("click",postData)
 getData()
@@ -76,6 +110,31 @@ async function deleteTask(id) {
     })
 console.log("se borró la tarea" + id);
 getData()
+location.reload()
 }
 
+/*Metodo PUT. El metodo PUT es el metodo que actualiza los datos que ya estan guardados en 
+la Api
+*/
+
+async function updateData (id) { 
+    try { let update =  await fetch (`http://localhost:3000/api/task/${id}`)
+        let datos = await update.json() 
+        let setState = {
+            estado: !datos.estado}
+            let peticion =  await fetch (`http://localhost:3000/api/task/${id}`, {
+                method: "PUT", headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                  },
+                  body: JSON.stringify(setState)        
+            })
+            let peticionUpdate = await peticion.json()
+            console.log(peticionUpdate);
+            getData() 
+            location.reload()
+    } catch (error) {
+console.log(error); 
+    }
+    
+}
 
