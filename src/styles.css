@@ -1,20 +1,75 @@
-h1{
-
-}
-
-.titleTask{
-
-}
-
-
-.BtnAT{
-
-}
-
-.ContainerTask{
-
-}
-
+body {
+    background-color: #FAF0E6;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    width: 300px;
+    height: auto;
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    margin: 50px auto;
+    border: 5px solid blue;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .task-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .task-item {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .task-item input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .task-item button {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .footer {
+    text-align: center;
+    font-size: 14px;
+  }
 .ContTask{
-    
+    background-color: transparent;
+    border: none;
+    color:#ffff;
+    text-align: center;
 }

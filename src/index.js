@@ -34,11 +34,7 @@ async function postData() {
         })
         let guardarDatos= await peticion.json()
         console.log(guardarDatos);
-<<<<<<< HEAD
         getData()
-=======
-        
->>>>>>> 75b35a4b4a2478eb2773ce49a4cad52013bce963
     } catch (error) {
         console.log(error);
     }
@@ -51,7 +47,6 @@ La variable datos funciona como arreglo por eso se le aplica la función forEach
 que haya en nuestra Api haciendo el código que esté dentro del bloque forEach.
 */
 async function getData() {
-<<<<<<< HEAD
      try {
         ContainerTask.innerHTML = ""
         let peticion = await fetch('http://localhost:3000/api/task')
@@ -78,29 +73,6 @@ async function getData() {
             checkBox.addEventListener("click", ()=>{
              if(tarea.estado){
                 ContTask.value++ 
-=======
-    let peticion = await fetch('http://localhost:3000/api/task')
-    let datos = await peticion.json()
-    datos.forEach( tarea => {
-        let div = document.createElement("div")
-        let h2 = document.createElement("h2")
-        h2.innerHTML = tarea.nombre 
-        let checkBox = document.createElement("input")
-        checkBox.type = "checkbox"
-        let deleteBtn = document.createElement("button")
-        deleteBtn.innerHTML="Delete"
-
-        h2.appendChild (checkBox)
-        h2.appendChild(deleteBtn)
-        div.appendChild(h2)
-        ContainerTask.appendChild(div)
-        deleteBtn.addEventListener("click",()=>{
-         deleteTask(tarea.id)
-        })
-    });
-}
-BtnAT.addEventListener("click",postData)
->>>>>>> 75b35a4b4a2478eb2773ce49a4cad52013bce963
 
             updateData(tarea.id)
 
@@ -134,13 +106,9 @@ async function deleteTask(id) {
     let peticion = await fetch(`http://localhost:3000/api/task/${id}`,{
         method: "DELETE" 
     })
-<<<<<<< HEAD
 console.log("se borró la tarea" + id);
 getData()
 location.reload()
-=======
-    console.log("se borró la tarea" + id);
->>>>>>> 75b35a4b4a2478eb2773ce49a4cad52013bce963
 }
 
 /*Metodo PUT. El metodo PUT es el metodo que actualiza los datos que ya estan guardados en 
@@ -169,11 +137,5 @@ console.log(error);
 }
 
 
-//Metodo PUT. 
-async function updateData(id) {
-    let peticion = await fetch (`http://localhost:3000/api/task/${id}`,{
-        method:"PUT"
-    })
-    
-}
+
 
